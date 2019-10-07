@@ -7,7 +7,11 @@ import (
 
 func Provider() terraform.ResourceProvider {
 	return &schema.Provider{
-		DataSourcesMap: map[string]*schema.Resource{},
-		ResourcesMap:   map[string]*schema.Resource{},
+		DataSourcesMap: map[string]*schema.Resource{
+			"scaffolding_data_source": dataSourceScaffolding(),
+		},
+		ResourcesMap: map[string]*schema.Resource{
+			"scaffolding_resource": resourceScaffolding(),
+		},
 	}
 }
