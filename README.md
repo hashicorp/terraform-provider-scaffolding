@@ -1,17 +1,23 @@
 Terraform Provider Scaffolding
 ==================
 
-- Website: https://www.terraform.io
-- [![Gitter chat](https://badges.gitter.im/hashicorp-terraform/Lobby.png)](https://gitter.im/hashicorp-terraform/Lobby)
-- Mailing list: [Google Groups](http://groups.google.com/group/terraform-tool)
+This repository is a *template* for a [Terraform](https://www.terraform.io) provider. It is intended as a starting point for creating Terraform providers, containing:
 
-![Terraform](https://rawgithub.com/hashicorp/terraform/master/website/source/assets/images/logo-hashicorp.svg)
+ - A resource, and a data source (`scaffolding/`),
+ - Documentation (`website/`),
+ - Recommended build system (`GNUMakefile`, `.travis.yml`, `scripts/`),
+ - Miscellanious meta files.
+ 
+These files contain boilerplate code that you will need to edit to create your own Terraform provider. A full guide to creating Terraform providers can be found at [Writing Custom Providers](https://www.terraform.io/docs/extend/writing-custom-providers.html).
+
+Please see the [GitHub template repository documentation](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) for how to create a new repository from this template on GitHub.
+
 
 Requirements
 ------------
 
 -	[Terraform](https://www.terraform.io/downloads.html) 0.10.x
--	[Go](https://golang.org/doc/install) 1.8 (to build the provider plugin)
+-	[Go](https://golang.org/doc/install) 1.11
 
 Building The Provider
 ---------------------
@@ -29,6 +35,24 @@ Enter the provider directory and build the provider
 $ cd $GOPATH/src/github.com/terraform-providers/terraform-provider-scaffolding
 $ make build
 ```
+
+Adding Dependencies
+---------------------
+
+This provider is a [Go module](https://github.com/golang/go/wiki/Modules). Please see the Go documentation for the most up to date information about using Go modules.
+
+We recommend that Terraform providers use [vendoring]() for their Go dependencies.
+
+To add a new dependency `github.com/author/dependency` to your Terraform provider:
+
+```
+go get github.com/author/dependency
+go mod tidy
+go mod vendor
+```
+
+Then commit the changes to `go.mod` and `vendor/`.
+
 
 Using the provider
 ----------------------
