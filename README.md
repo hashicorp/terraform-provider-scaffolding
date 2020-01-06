@@ -41,7 +41,7 @@ Adding Dependencies
 
 This provider is a [Go module](https://github.com/golang/go/wiki/Modules). Please see the Go documentation for the most up to date information about using Go modules.
 
-We recommend that Terraform providers use [vendoring]() for their Go dependencies.
+We recommend that Terraform providers use [vendoring](https://tip.golang.org/cmd/go/#hdr-Make_vendored_copy_of_dependencies) for their Go dependencies.
 
 To add a new dependency `github.com/author/dependency` to your Terraform provider:
 
