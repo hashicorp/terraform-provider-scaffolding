@@ -4,6 +4,9 @@ WEBSITE_REPO=github.com/hashicorp/terraform-website
 PKG_NAME=scaffolding
 COVER_TEST?=$$(go list ./... |grep -v 'vendor')
 
+.EXPORT_ALL_VARIABLES:
+  GOFLAGS=-mod=vendor
+
 default: build
 
 build: fmtcheck
