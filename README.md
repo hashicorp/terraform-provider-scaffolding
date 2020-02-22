@@ -56,7 +56,8 @@ Then commit the changes to `go.mod` and `vendor/`.
 
 Using the provider
 ----------------------
-## Fill in for each provider
+
+Fill this in for each provider
 
 Developing the Provider
 ---------------------------
