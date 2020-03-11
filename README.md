@@ -5,7 +5,6 @@ This repository is a *template* for a [Terraform](https://www.terraform.io) prov
 
  - A resource, and a data source (`internal/provider/`),
  - Documentation (`website/`),
- - Recommended build system (`GNUMakefile`, `.travis.yml`, `scripts/`),
  - Miscellanious meta files.
  
 These files contain boilerplate code that you will need to edit to create your own Terraform provider. A full guide to creating Terraform providers can be found at [Writing Custom Providers](https://www.terraform.io/docs/extend/writing-custom-providers.html).
@@ -16,42 +15,33 @@ Please see the [GitHub template repository documentation](https://help.github.co
 Requirements
 ------------
 
--	[Terraform](https://www.terraform.io/downloads.html) 0.10.x
--	[Go](https://golang.org/doc/install) 1.11
+-	[Terraform](https://www.terraform.io/downloads.html) 0.12.x
+-	[Go](https://golang.org/doc/install) 1.12
 
 Building The Provider
 ---------------------
 
-Clone repository to: `$GOPATH/src/github.com/hashicorp/terraform-provider-scaffolding`
-
+1. Clone the repository
+1. Enter the repository directory
+1. Build the provider using the Go `install` command: 
 ```sh
-$ mkdir -p $GOPATH/src/github.com/hashicorp; cd $GOPATH/src/github.com/hashicorp
-$ git clone git@github.com:hashicorp/terraform-provider-scaffolding
-```
-
-Enter the provider directory and build the provider
-
-```sh
-$ cd $GOPATH/src/github.com/hashicorp/terraform-provider-scaffolding
-$ make build
+$ go install
 ```
 
 Adding Dependencies
 ---------------------
 
-This provider is a [Go module](https://github.com/golang/go/wiki/Modules). Please see the Go documentation for the most up to date information about using Go modules.
-
-We recommend that Terraform providers use [vendoring](https://tip.golang.org/cmd/go/#hdr-Make_vendored_copy_of_dependencies) for their Go dependencies.
+This provider uses [Go modules](https://github.com/golang/go/wiki/Modules).
+Please see the Go documentation for the most up to date information about using Go modules.
 
 To add a new dependency `github.com/author/dependency` to your Terraform provider:
 
 ```
 go get github.com/author/dependency
 go mod tidy
-go mod vendor
 ```
 
-Then commit the changes to `go.mod` and `vendor/`.
+Then commit the changes to `go.mod` and `go.sum`.
 
 
 Using the provider
@@ -62,22 +52,9 @@ Fill this in for each provider
 Developing the Provider
 ---------------------------
 
-If you wish to work on the provider, you'll first need [Go](http://www.golang.org) installed on your machine (version 1.8+ is *required*). You'll also need to correctly setup a [GOPATH](http://golang.org/doc/code.html#GOPATH), as well as adding `$GOPATH/bin` to your `$PATH`.
+If you wish to work on the provider, you'll first need [Go](http://www.golang.org) installed on your machine (version 1.12+ is *required*).
 
-To compile the provider, run `make build`. This will build the provider and put the provider binary in the `$GOPATH/bin` directory.
-
-```sh
-$ make bin
-...
-$ $GOPATH/bin/terraform-provider-scaffolding
-...
-```
-
-In order to test the provider, you can simply run `make test`.
-
-```sh
-$ make test
-```
+To compile the provider, run `go install`. This will build the provider and put the provider binary in the `$GOPATH/bin` directory.
 
 In order to run the full suite of Acceptance tests, run `make testacc`.
 
