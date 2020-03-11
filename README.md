@@ -3,7 +3,7 @@ Terraform Provider Scaffolding
 
 This repository is a *template* for a [Terraform](https://www.terraform.io) provider. It is intended as a starting point for creating Terraform providers, containing:
 
- - A resource, and a data source (`scaffolding/`),
+ - A resource, and a data source (`internal/provider/`),
  - Documentation (`website/`),
  - Recommended build system (`GNUMakefile`, `.travis.yml`, `scripts/`),
  - Miscellanious meta files.
