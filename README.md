@@ -15,8 +15,8 @@ Please see the [GitHub template repository documentation](https://help.github.co
 Requirements
 ------------
 
--	[Terraform](https://www.terraform.io/downloads.html) 0.12.x
--	[Go](https://golang.org/doc/install) 1.12
+-	[Terraform](https://www.terraform.io/downloads.html) >= 0.12.x
+-	[Go](https://golang.org/doc/install) >= 1.12
 
 Building The Provider
 ---------------------
@@ -52,7 +52,7 @@ Fill this in for each provider
 Developing the Provider
 ---------------------------
 
-If you wish to work on the provider, you'll first need [Go](http://www.golang.org) installed on your machine (version 1.12+ is *required*).
+If you wish to work on the provider, you'll first need [Go](http://www.golang.org) installed on your machine (see [Requirements](#requirements) above).
 
 To compile the provider, run `go install`. This will build the provider and put the provider binary in the `$GOPATH/bin` directory.
 
