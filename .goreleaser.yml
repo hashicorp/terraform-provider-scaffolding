@@ -19,23 +19,13 @@ builds:
     - '386'
     - arm
     - arm64
-  ignore:
+  ignore:  
     - goos: darwin
       goarch: '386'
-    - goos: darwin
-      goarch: arm
-    - goos: darwin
-      goarch: arm64
     - goos: openbsd
       goarch: arm
     - goos: openbsd
       goarch: arm64
-    - goos: solaris
-      goarch: arm
-    - goos: solaris
-      goarch: arm64
-    - goos: solaris
-      goarch: '386'
   binary: '{{ .ProjectName }}_v{{ .Version }}'
 archives:
 - format: zip
