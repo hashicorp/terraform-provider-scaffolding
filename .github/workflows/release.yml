@@ -1,0 +1,49 @@
+# This GitHub action can publish assets for release when a tag is created.
+# Uncomment the event for tag push to have it execute when a new tag is published. 
+# You may want to constrain events to tags that match valid semver patterns.
+#
+# This uses an action (paultyng/ghaction-import-gpg) that assumes you set your 
+# private key in the `GPG_PRIVATE_KEY` secret and passphrase in the `PASSPHRASE`
+# secret. If you would rather own your own GPG handling, please fork this action
+# or use an alternative one for key handling.
+#
+# You will need to pass the `--batch` flag to `gpg` in your signing step 
+# in `goreleaser` to indicate this is being used in a non-interactive mode.
+#
+name: goreleaser
+on:
+# Uncomment the lines below to have this run for new tags:
+#  push:
+#    tags:
+#      - '*'
+jobs:
+  goreleaser:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Unshallow
+        run: git fetch --prune --unshallow
+      -
+        name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.14
+      -
+        name: Import GPG key
+        id: import_gpg
+        uses: paultyng/ghaction-import-gpg@v2.1.0
+        env:
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          PASSPHRASE: ${{ secrets.PASSPHRASE }}
+      -
+        name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: latest
+          args: release --rm-dist
+        env:
+          GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
