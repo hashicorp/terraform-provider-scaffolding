@@ -10,12 +10,11 @@
 # You will need to pass the `--batch` flag to `gpg` in your signing step 
 # in `goreleaser` to indicate this is being used in a non-interactive mode.
 #
-name: goreleaser
+name: release
 on:
-# Uncomment the lines below to have this run for new tags:
-#  push:
-#    tags:
-#      - '*'
+  push:
+    tags:
+      - 'v*'
 jobs:
   goreleaser:
     runs-on: ubuntu-latest
