@@ -31,8 +31,8 @@ signs:
   - artifacts: checksum
     args:
       # if you are using this is a GitHub action or some other automated pipeline, you 
-      # may want to pass the batch flag to indicate its not interactive.
-      # - "--batch" 
+      # need to pass the batch flag to indicate its not interactive.
+      - "--batch"
       - "--local-user"
       - "{{ .Env.GPG_FINGERPRINT }}" # set this environment variable for your signing key
       - "--output"
