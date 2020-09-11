@@ -18,5 +18,8 @@ func dataSourceScaffolding() *schema.Resource {
 }
 
 func dataSourceScaffoldingRead(d *schema.ResourceData, meta interface{}) error {
+	// use the meta value to retrieve your client from the provider configure method
+	// client := meta.(*apiClient)
+
 	return nil
 }
