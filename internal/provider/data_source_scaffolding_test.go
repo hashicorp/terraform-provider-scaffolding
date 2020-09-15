@@ -13,7 +13,7 @@ func TestAccDataSourceScaffolding(t *testing.T) {
 		Providers: testAccProviders,
 		Steps: []resource.TestStep{
 			{
-				Config: testAccResourceScaffolding,
+				Config: testAccDataSourceScaffolding,
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestMatchResourceAttr(
 						"scaffolding_data_source.foo", "sample_attribute", regexp.MustCompile("^ba")),
