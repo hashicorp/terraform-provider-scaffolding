@@ -1,14 +1,15 @@
 package provider
 
 import (
-	"errors"
+	"context"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
 func dataSourceScaffolding() *schema.Resource {
 	return &schema.Resource{
-		Read: dataSourceScaffoldingRead,
+		ReadContext: dataSourceScaffoldingRead,
 
 		Schema: map[string]*schema.Schema{
 			"sample_attribute": {
@@ -19,9 +20,12 @@ func dataSourceScaffolding() *schema.Resource {
 	}
 }
 
-func dataSourceScaffoldingRead(d *schema.ResourceData, meta interface{}) error {
+func dataSourceScaffoldingRead(ctx context.Context, d *schema.ResourceData, meta interface{}) diag.Diagnostics {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return errors.New("Not implemented")
+	idFromAPI := "my-id"
+	d.SetId(idFromAPI)
+
+	return diag.Errorf("not implemented")
 }

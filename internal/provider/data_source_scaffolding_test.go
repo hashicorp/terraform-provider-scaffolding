@@ -16,7 +16,7 @@ func TestAccDataSourceScaffolding(t *testing.T) {
 				Config: testAccDataSourceScaffolding,
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestMatchResourceAttr(
-						"scaffolding_data_source.foo", "sample_attribute", regexp.MustCompile("^ba")),
+						"data.scaffolding_data_source.foo", "sample_attribute", regexp.MustCompile("^ba")),
 				),
 			},
 		},
