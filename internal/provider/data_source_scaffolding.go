@@ -1,6 +1,8 @@
 package provider
 
 import (
+	"errors"
+
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
@@ -21,5 +23,5 @@ func dataSourceScaffoldingRead(d *schema.ResourceData, meta interface{}) error {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return nil
+	return errors.New("Not implemented")
 }

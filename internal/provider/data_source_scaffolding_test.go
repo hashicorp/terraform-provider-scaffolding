@@ -24,7 +24,7 @@ func TestAccDataSourceScaffolding(t *testing.T) {
 }
 
 const testAccDataSourceScaffolding = `
-resource "scaffolding_data_source" "foo" {
+data "scaffolding_data_source" "foo" {
   sample_attribute = "bar"
 }
 `
