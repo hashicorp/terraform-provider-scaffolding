@@ -26,7 +26,7 @@ func resourceScaffoldingCreate(d *schema.ResourceData, meta interface{}) error {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return resourceScaffoldingRead(d, meta)
+	return errors.New("Not implemented")
 }
 
 func resourceScaffoldingRead(d *schema.ResourceData, meta interface{}) error {
@@ -40,7 +40,7 @@ func resourceScaffoldingUpdate(d *schema.ResourceData, meta interface{}) error {
 	// use the meta value to retrieve your client from the provider configure method
 	// client := meta.(*apiClient)
 
-	return resourceScaffoldingRead(d, meta)
+	return errors.New("Not implemented")
 }
 
 func resourceScaffoldingDelete(d *schema.ResourceData, meta interface{}) error {
