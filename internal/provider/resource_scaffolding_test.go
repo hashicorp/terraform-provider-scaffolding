@@ -8,6 +8,8 @@ import (
 )
 
 func TestAccResourceScaffolding(t *testing.T) {
+	t.Skip("resource not yet implemented, remove this once you add your own code")
+
 	resource.UnitTest(t, resource.TestCase{
 		PreCheck:          func() { testAccPreCheck(t) },
 		ProviderFactories: providerFactories,
