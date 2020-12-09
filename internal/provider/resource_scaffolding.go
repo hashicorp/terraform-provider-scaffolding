@@ -9,6 +9,9 @@ import (
 
 func resourceScaffolding() *schema.Resource {
 	return &schema.Resource{
+		// This description is used by the documentation generator and the language server.
+		Description: "Sample resource in the Terraform provider scaffolding.",
+
 		CreateContext: resourceScaffoldingCreate,
 		ReadContext:   resourceScaffoldingRead,
 		UpdateContext: resourceScaffoldingUpdate,
@@ -16,8 +19,10 @@ func resourceScaffolding() *schema.Resource {
 
 		Schema: map[string]*schema.Schema{
 			"sample_attribute": {
-				Type:     schema.TypeString,
-				Optional: true,
+				// This description is used by the documentation generator and the language server.
+				Description: "Sample attribute.",
+				Type:        schema.TypeString,
+				Optional:    true,
 			},
 		},
 	}

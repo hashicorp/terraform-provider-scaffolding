@@ -1,25 +1,20 @@
 ---
-layout: "scaffolding"
-page_title: "Provider: Scaffolding"
-sidebar_current: "docs-scaffolding-index"
+page_title: "scaffolding Provider"
+subcategory: ""
 description: |-
-  Terraform provider scaffolding.
+  
 ---
 
-# Scaffolding Provider
+# scaffolding Provider
 
-Use this paragraph to give a high-level overview of your provider, and any configuration it requires.
 
-Use the navigation to the left to read about the available resources.
 
 ## Example Usage
 
-```hcl
+```terraform
 provider "scaffolding" {
-}
-
-# Example resource configuration
-resource "scaffolding_resource" "example" {
-  # ...
+  # example configuration here
 }
 ```
+
+## Schema
