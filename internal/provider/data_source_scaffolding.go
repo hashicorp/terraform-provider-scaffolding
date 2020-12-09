@@ -9,12 +9,17 @@ import (
 
 func dataSourceScaffolding() *schema.Resource {
 	return &schema.Resource{
+		// This description is used by the documentation generator and the language server.
+		Description: "Sample data source in the Terraform provider scaffolding.",
+
 		ReadContext: dataSourceScaffoldingRead,
 
 		Schema: map[string]*schema.Schema{
 			"sample_attribute": {
-				Type:     schema.TypeString,
-				Required: true,
+				// This description is used by the documentation generator and the language server.
+				Description: "Sample attribute.",
+				Type:        schema.TypeString,
+				Required:    true,
 			},
 		},
 	}

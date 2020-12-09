@@ -1,23 +1,30 @@
 ---
-layout: "scaffolding"
-page_title: "Scaffolding: scaffolding_data_source"
-sidebar_current: "docs-scaffolding-data-source"
+page_title: "scaffolding_data_source Data Source - terraform-provider-scaffolding"
+subcategory: ""
 description: |-
   Sample data source in the Terraform provider scaffolding.
 ---
 
-# scaffolding_data_source
+# Data Source `scaffolding_data_source`
 
 Sample data source in the Terraform provider scaffolding.
 
 ## Example Usage
 
-```hcl
+```terraform
 data "scaffolding_data_source" "example" {
   sample_attribute = "foo"
 }
 ```
 
-## Attributes Reference
+## Schema
 
-* `sample_attribute` - Sample attribute.
+### Required
+
+- **sample_attribute** (String, Required) Sample attribute.
+
+### Optional
+
+- **id** (String, Optional) The ID of this resource.
+
+

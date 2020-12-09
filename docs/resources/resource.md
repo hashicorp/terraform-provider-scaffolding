@@ -1,26 +1,27 @@
 ---
-layout: "scaffolding"
-page_title: "Scaffolding: scaffolding_resource"
-sidebar_current: "docs-scaffolding-resource"
+page_title: "scaffolding_resource Resource - terraform-provider-scaffolding"
+subcategory: ""
 description: |-
   Sample resource in the Terraform provider scaffolding.
 ---
 
-# scaffolding_resource
+# Resource `scaffolding_resource`
 
 Sample resource in the Terraform provider scaffolding.
 
 ## Example Usage
 
-```hcl
+```terraform
 resource "scaffolding_resource" "example" {
   sample_attribute = "foo"
 }
 ```
 
-## Argument Reference
+## Schema
 
-The following arguments are supported:
+### Optional
 
-* `sample_attribute` - Sample attribute.
+- **id** (String, Optional) The ID of this resource.
+- **sample_attribute** (String, Optional) Sample attribute.
+
 
