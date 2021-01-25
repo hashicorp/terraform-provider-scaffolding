@@ -32,8 +32,8 @@ jobs:
       -
         name: Import GPG key
         id: import_gpg
-        # move this to HashiCorp namespace or find alternative that is just simple gpg commands
-        # https://github.com/hashicorp/terraform-provider-scaffolding/issues/22
+        # TODO: move this to HashiCorp namespace or find alternative that is just simple gpg commands
+        # see https://github.com/hashicorp/terraform-provider-scaffolding/issues/22
         uses: paultyng/ghaction-import-gpg@v2.1.0
         env:
           # These secrets will need to be configured for the repository:
