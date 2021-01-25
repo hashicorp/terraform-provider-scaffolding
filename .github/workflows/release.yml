@@ -32,8 +32,11 @@ jobs:
       -
         name: Import GPG key
         id: import_gpg
+        # move this to HashiCorp namespace or find alternative that is just simple gpg commands
+        # https://github.com/hashicorp/terraform-provider-scaffolding/issues/22
         uses: paultyng/ghaction-import-gpg@v2.1.0
         env:
+          # These secrets will need to be configured for the repository:
           GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
           PASSPHRASE: ${{ secrets.PASSPHRASE }}
       -
@@ -44,4 +47,5 @@ jobs:
           args: release --rm-dist
         env:
           GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          # GitHub sets this automatically
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
