@@ -20,9 +20,10 @@ func resourceScaffolding() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"sample_attribute": {
 				// This description is used by the documentation generator and the language server.
-				Description: "Sample attribute.",
-				Type:        schema.TypeString,
-				Optional:    true,
+				Description:      "Sample attribute.",
+				Type:             schema.TypeString,
+				Optional:         true,
+				ValidateDiagFunc: validateStringIsABC,
 			},
 		},
 	}
