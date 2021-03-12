@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/go-cty/cty"
 )
 
-func TestValidateStringShouldBeBase64EncodedDiag(t *testing.T) {
+func TestValidateStringIsABC(t *testing.T) {
 	v := "abc"
 	if diags := validateStringIsABC(v, *new(cty.Path)); len(diags) != 0 {
 		t.Fatalf("%q should be abc", v)
