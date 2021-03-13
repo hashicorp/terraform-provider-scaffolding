@@ -23,7 +23,7 @@ func resourceScaffolding() *schema.Resource {
 				Description:      "Sample attribute.",
 				Type:             schema.TypeString,
 				Optional:         true,
-				ValidateDiagFunc: validateStringIsABC,
+				ValidateDiagFunc: validateStringIs("abc"),
 			},
 		},
 	}
