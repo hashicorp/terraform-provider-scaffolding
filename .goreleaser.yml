@@ -5,7 +5,28 @@ before:
     # this is just an example and not a requirement for provider building/publishing
     - go mod tidy
 builds:
-- env:
+# In cases when behind a VPN, plugins that make DNS queries need to use 
+# the system DNS resolver in order to function. This requires the netcgo 
+# tag be enabled,CGO not explicitly disabled, and the builds to happen on
+# a darwin host. Separate the darwin builds out so tha we are able to 
+# handle the different requirements in CI.
+- id: darwin
+  env:
+  mod_timestamp: '{{ .CommitTimestamp }}'
+  flags:
+    - -trimpath
+    - -tags=netcgo
+  ldflags:
+    - '-s -w -X main.version={{.Version}} -X main.commit={{.Commit}}'
+  goos:
+    - darwin
+  goarch:
+    - amd64
+    - arm
+    - arm64
+  binary: '{{ .ProjectName }}_v{{ .Version }}'
+- id: default
+  env:
     # goreleaser does not work with CGO, it could also complicate
     # usage by users in CI/CD systems like Terraform Cloud where
     # they are unable to install libraries.
@@ -19,15 +40,11 @@ builds:
     - freebsd
     - windows
     - linux
-    - darwin
   goarch:
     - amd64
     - '386'
     - arm
     - arm64
-  ignore:
-    - goos: darwin
-      goarch: '386'
   binary: '{{ .ProjectName }}_v{{ .Version }}'
 archives:
 - format: zip
