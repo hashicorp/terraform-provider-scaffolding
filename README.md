@@ -4,6 +4,7 @@ This repository is a *template* for a [Terraform](https://www.terraform.io) prov
 
  - A resource, and a data source (`internal/provider/`),
  - Examples (`examples/`) and generated documentation (`docs/`),
+ - GitHub Actions workflows for `test` and `release`.
  - Miscellaneous meta files.
  
 These files contain boilerplate code that you will need to edit to create your own Terraform provider. A full guide to creating Terraform providers can be found at [Writing Custom Providers](https://www.terraform.io/docs/extend/writing-custom-providers.html).
@@ -60,3 +61,17 @@ In order to run the full suite of Acceptance tests, run `make testacc`.
 ```sh
 $ make testacc
 ```
+
+## Releasing the Provider
+
+To release a new version of a provider, add a tag to the commit you want to release in the format `vX.Y.Z` and push it.
+GitHub Actions is configured to treat these tags as releases. E.g.:
+
+```
+git tag -am "Release v0.1.2" v0.1.2
+git push origin v0.1.2
+```
+
+Note that the macOS (darwin) build must be run on a macOS host in order to have correct DNS lookup behavior.
+The included GitHub Actions config in `.github/workflows/release.yml` is configured
+to trigger the darwin build defined in `.goreleaser.yml` separately on a mac executor for this reason.
