@@ -51,11 +51,12 @@ jobs:
       matrix:
         # list whatever Terraform versions here you would like to support
         terraform:
-          - '0.12.31'
-          - '0.13.7'
-          - '0.14.11'
-          - '0.15.5'
-          - '1.0.11'
+          - '0.12.*'
+          - '0.13.*'
+          - '0.14.*'
+          - '0.15.*'
+          - '1.0.*'
+          - '1.1.*'
     steps:
 
     - name: Set up Go
@@ -63,6 +64,11 @@ jobs:
       with:
         go-version: '1.15'
       id: go
+
+    - uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: ${{ matrix.terraform }}
+        terraform_wrapper: false
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2.4.0
@@ -75,7 +81,6 @@ jobs:
       timeout-minutes: 10
       env:
         TF_ACC: "1"
-        TF_ACC_TERRAFORM_VERSION: ${{ matrix.terraform }}
 
         # Set whatever additional acceptance test env vars here. You can
         # optionally use data from your repository secrets using the
