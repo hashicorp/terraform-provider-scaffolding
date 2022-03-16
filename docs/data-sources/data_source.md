@@ -23,10 +23,10 @@ data "scaffolding_data_source" "example" {
 
 ### Required
 
-- **sample_attribute** (String) Sample attribute.
+- `sample_attribute` (String) Sample attribute.
 
 ### Optional
 
-- **id** (String) The ID of this resource.
+- `id` (String) The ID of this resource.
 
 
