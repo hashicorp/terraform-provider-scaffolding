@@ -23,7 +23,7 @@ resource "scaffolding_resource" "example" {
 
 ### Optional
 
-- **id** (String) The ID of this resource.
-- **sample_attribute** (String) Sample attribute.
+- `id` (String) The ID of this resource.
+- `sample_attribute` (String) Sample attribute.
 
 
