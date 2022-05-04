@@ -25,7 +25,7 @@ data "scaffolding_data_source" "example" {
 
 - `sample_attribute` (String) Sample attribute.
 
-### Optional
+### Read-Only
 
 - `id` (String) The ID of this resource.
 
