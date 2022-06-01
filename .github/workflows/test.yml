@@ -23,14 +23,15 @@ jobs:
     timeout-minutes: 5
     steps:
 
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v3
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: '1.16'
+        go-version-file: 'go.mod'
+        cache: true
       id: go
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v3
 
     - name: Get dependencies
       run: |
@@ -43,10 +44,11 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
-          go-version: '1.16'
-      - uses: actions/checkout@v3
+          go-version-file: 'go.mod'
+          cache: true
       - run: go generate ./...
       - name: git diff
         run: |
@@ -72,19 +74,20 @@ jobs:
           - '1.1.*'
     steps:
 
+    - name: Check out code into the Go module directory
+      uses: actions/checkout@v3
+
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
-        go-version: '1.17'
+        go-version-file: 'go.mod'
+        cache: true
       id: go
 
     - uses: hashicorp/setup-terraform@v2
       with:
         terraform_version: ${{ matrix.terraform }}
         terraform_wrapper: false
-
-    - name: Check out code into the Go module directory
-      uses: actions/checkout@v3
 
     - name: Get dependencies
       run: |
